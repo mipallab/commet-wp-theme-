@@ -20,7 +20,7 @@
   </div>
   <div class="post-media">
     <div class="media-audio">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/51057943&amp;amp;color=ff5500&amp;amp;auto_play=false&amp;amp;hide_related=false&amp;amp;show_comments=true&amp;amp;show_user=true&amp;amp;show_reposts=false" frameborder="0"></iframe>
+      <?php echo wp_oembed_get(get_post_meta(get_the_id(),'_audio-url', true))?>
     </div>
   </div>
   <div class="post-body">

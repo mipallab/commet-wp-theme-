@@ -18,7 +18,7 @@
   </div>
   <div class="post-media">
     <div class="media-video">
-      <iframe src="https://www.youtube.com/embed/rrT6v5sOwJg" frameborder="0"></iframe>
+      <?php echo wp_oembed_get(get_post_meta(get_the_id(),'_video-url',true));?>
     </div>
   </div>
   <div class="post-body">
