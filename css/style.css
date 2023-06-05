@@ -6,6 +6,8 @@
 /*
   Common Styles
 */
+
+
 html,
 body {
   height: 100%;
@@ -2606,46 +2608,50 @@ section.parallax .countdown span {
   line-height: 1.4;
   color: #191b1d;
 }
+
 .pagination {
   display: block;
   text-align: center;
   margin-top: 50px;
+
 }
-.pagination li {
+.pagination a {
   display: inline-block;
+  padding:5px 10px;
 }
-.pagination li.active > a {
+.pagination span.current {
   background-color: #EF2D56;
-  border-color: #EF2D56;
+  border: 1px solid #EF2D56;
   color: #fff;
+  padding:5px 10px;
 }
-.pagination li.active > a:hover {
+.pagination span.current:hover {
   background-color: transparent;
   color: #EF2D56;
   border-color: #EF2D56;
 }
-.pagination li.active > a:focus {
+.pagination span.current:focus {
   background-color: #EF2D56;
   border-color: #EF2D56;
   color: #fff;
 }
-.pagination li:first-child > a,
-.pagination li:last-child > a {
+.pagination a:first-child,
+.pagination a:last-child {
   border-radius: 0;
 }
-.pagination li > a {
+.pagination  a {
   color: #191b1d;
   border-color: transparent;
   font-size: 14px;
   border-radius: 0;
   background-color: transparent;
 }
-.pagination li > a:hover {
+.pagination a:hover {
   background-color: #191b1d;
   color: #fff;
   border-color: #191b1d;
 }
-.pagination li > a:focus {
+.pagination a:focus {
   background-color: transparent;
   border-color: transparent;
   color: #EF2D56;

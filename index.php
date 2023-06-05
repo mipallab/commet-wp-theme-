@@ -19,21 +19,24 @@
       <div class="container">
         <div class="col-md-8">
           <div class="blog-posts">
-
+            <!-- dyanmic post  -->
               <?php while(have_posts()): the_post();?>
                 <?php get_template_part('post-format/content', get_post_format());?>
               <?php endwhile;?>
-
+            <!-- dyanmic post end -->
           </div>
-          <ul class="pagination">
-            <li><a href="#" aria-label="Previous"><span aria-hidden="true"><i class="ti-arrow-left"></i></span></a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#" aria-label="Next"><span aria-hidden="true"><i class="ti-arrow-right"></i></span></a></li>
-          </ul>
+
+          <!-- pagination -->
+            <?php
+              the_posts_pagination([
+                'mid_size'          => 1,
+                'prev_next'         => true,
+                'prev_text'         => __('<span aria-hidden="true"><i class="ti-arrow-left"></i></span>','commet'),
+                'next_text'         => __('<span aria-hidden="true"><i class="ti-arrow-right"></i></span>', 'commet'),
+                'screen_reader_text' => __(' ','commet')
+              ]);
+            ?>
+          <!-- pagination end -->
         </div>
         <div class="col-md-3 col-md-offset-1">
           <div class="sidebar hidden-sm hidden-xs">
