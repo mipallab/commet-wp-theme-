@@ -3605,14 +3605,16 @@ section.dark .nav-tabs.outline > li.active > a:hover {
 #footer-widgets .widget {
   margin: 25px 0;
 }
-#footer-widgets .widget ul {
+#footer-widgets .widget ul.menu {
   margin-bottom: 0;
+  padding:0;
+  list-style: none;
 }
-#footer-widgets .widget ul li a {
+#footer-widgets .widget ul.menu li a {
   display: inline-block;
   color: #494e53;
 }
-#footer-widgets .widget ul li a:hover {
+#footer-widgets .widget ul.menu li a:hover {
   color: #EF2D56;
 }
 #footer {
@@ -4504,6 +4506,10 @@ section.dark .nav-tabs.outline > li.active > a:hover {
     max-width: 100%;
     max-height: 80px;
   }
+}
+
+.menu-item-type-post_type {
+  float:none;
 }
 @media (max-height: 400px) {
   .gallery-image {

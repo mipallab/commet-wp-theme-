@@ -21,7 +21,7 @@
 		add_theme_support('post-formats',['audio','video','quote','gallery']);
 
 	// register CUSTOM PROTFOLIO post type
-		register_post_type('commet-protfolio',[
+		register_post_type('protfolio',[
 			'public'		       => true,
 			'labels'		       => [
 				'menu_name'		   => __('Commet Protfolios','commet'),
@@ -223,8 +223,8 @@
 	}
 
 // commet custom footer about Widgets
-	if(file_exists(dirname(__FILE__).'/custom-widgets/commet_custom_about_section.php')) {
-		require_once(dirname(__FILE__).'/custom-widgets/commet_custom_about_section.php');
+	if(file_exists(dirname(__FILE__).'/library/custom-widgets/commet_custom_about_section.php')) {
+		require_once(dirname(__FILE__).'/library/custom-widgets/commet_custom_about_section.php');
 	}
 
 // commet theme options add

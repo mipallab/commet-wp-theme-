@@ -19,7 +19,7 @@
 	         <?php echo $args['after_widget'];?>
 		<?php }
 
-		// backend 
+		// backend
 		public function form($instance){ ?>
 			<!-- title -->
 			<p>
@@ -35,7 +35,7 @@
 			</p>
 			<!-- button text url-->
 			<p>
-				<label for="<?php echo $this-> get_field_id('about-button-url-id');?>">Button Text:</label><input type="text" class="widefat" id="<?php echo $this-> get_field_id('about-button-url-id');?>" value='<?php echo $instance['about-button-url'];?>' name="<?php echo $this->get_field_name('about-button-url');?>">
+				<label for="<?php echo $this-> get_field_id('about-button-url-id');?>">Button URL:</label><input type="text" class="widefat" id="<?php echo $this-> get_field_id('about-button-url-id');?>" value='<?php echo $instance['about-button-url'];?>' name="<?php echo $this->get_field_name('about-button-url');?>">
 			</p>
 		<?php }
 	}
