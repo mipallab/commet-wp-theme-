@@ -12,8 +12,8 @@
 		public function widget($tags, $tumar) {	?>
 
 				<?php echo $tags['before_widget'];?>
-				    <?php echo $tags['before_title'];?> 
-				      	Latest Posts 
+				    <?php echo $tags['before_title'];?>
+				      	Latest Posts
 				    <?php echo  $tags['after_title'];
 
 				    	$posts = new WP_Query(array(
@@ -32,18 +32,7 @@
 				        	<?php endif;?>
 				        </a></li>
 				    	<?php endwhile;?>
-				    </ul> 		
-
-				    <!-- radio checked -->
-				    <ul class="nav">
-				        <?php while($posts-> have_posts()): $posts-> the_post();?>
-				        <li><a href="#"><?php the_title();?><i class="ti-arrow-right"></i>
-				        	<?php if($tumar['showDate'] == "show") :?>
-				        		<span><?php the_time('F j, Y');?></span>
-				        	<?php endif;?>
-				        </a></li>
-				    	<?php endwhile;?>
-				    </ul>		
+				    </ul>
 			    <?php echo $tags['after_widget'];?>
 <?php  }
 
@@ -61,29 +50,14 @@
 			<p>
 				<input type="checkbox" id="<?php echo $this->get_field_id('date')?>" value="shwdate" name="<?php echo $this-> get_field_name('date');?>" <?php echo (!empty($instance['date'])) ? "checked='checked'" : ' ';?>>
 				<label for="<?php echo $this->get_field_id('date')?>">Display post date?</label>
-			</p> 
-		<?php 
-			if($instance['showDate'] == "show") {
-				$show = 'checked';
-			}else{
-				$hide = 'checked';
-			}
-
-		?>
-			<p>
-				<input type="radio" value="show" id="<?php echo $this->get_field_id('shwdatefield');?>" name="<?php echo $this->get_field_name('showDate');?>"<?php echo (isset($show)) ? $show : ' ';?>>
-				<label for="<?php echo $this->get_field_id('shwdatefield');?>">Show Date</label>
-
-
-				<input type="radio" value="hide" id="<?php echo $this-> get_field_id('hidedatefield');?>" name="<?php echo $this->get_field_name('showDate');?>" <?php echo (isset($hide)) ? $hide : ' ';?>>
-				<label for="<?php echo $this-> get_field_id('hidedatefield');?>">Hide Date</label>
 			</p>
+
 
 <?php	}
 
 	}
 
-	
+
 
 	add_action('widgets_init','commet_recent_post');
 

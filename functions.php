@@ -218,8 +218,8 @@
 	// }
 
 // commet custom latest post Widgets
-	if(file_exists(dirname(__FILE__).'/custom-widgets/commet-latest-post.php')) {
-		require_once(dirname(__FILE__).'/custom-widgets/commet-latest-post.php');
+	if(file_exists(dirname(__FILE__).'/library/custom-widgets/commet-latest-post.php')) {
+		require_once(dirname(__FILE__).'/library/custom-widgets/commet-latest-post.php');
 	}
 
 // commet custom footer about Widgets

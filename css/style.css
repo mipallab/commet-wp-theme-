@@ -2673,26 +2673,30 @@ section.parallax .countdown span {
 .sidebar .widget a:hover {
   color: #EF2D56;
 }
-.sidebar .widget ul.nav > li {
+.sidebar .widget ul {
+  padding:0;
+  list-style: none;
+}
+.sidebar .widget ul > li {
   margin-bottom: 0;
 }
-.sidebar .widget ul.nav > li:last-child > a {
+.sidebar .widget ul > li:last-child > a {
   border-bottom: 0;
 }
-.sidebar .widget ul.nav > li > a {
+.sidebar .widget ul > li > a {
   padding: 12px 0;
   border-bottom: 1px solid #e7e7e7;
   letter-spacing: 1px;
 }
-.sidebar .widget ul.nav > li > a > span {
+.sidebar .widget ul > li > a > span {
   display: block;
   color: #79818a;
   margin-top: 5px;
 }
-.sidebar .widget ul.nav > li > a:hover {
+.sidebar .widget ul > li > a:hover {
   background-color: transparent;
 }
-.sidebar .widget ul.nav > li > a:focus {
+.sidebar .widget ul > li > a:focus {
   background-color: transparent;
 }
 .widget h6 {
@@ -2723,7 +2727,10 @@ section.parallax .countdown span {
 .widget ul li a:hover i {
   margin-left: 10px;
 }
-.widget .tags a {
+.widget .tagcloud {
+  overflow:hidden;
+}
+.widget .tagcloud a {
   display: block;
   float: left;
   padding: 10px 15px;
@@ -2736,7 +2743,7 @@ section.parallax .countdown span {
   transition: all .3s ease;
   font-weight: 500;
 }
-.widget .tags a:hover {
+.widget .tagcloud a:hover {
   background-color: #EF2D56;
   border-color: #EF2D56;
   color: #fff;
