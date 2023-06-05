@@ -39,7 +39,7 @@
 		register_sidebar(array(
 			'id'			           => 'right_sidebar',
 			'name'			         => __('Right Sidebar', 'commet'),
-			'description'	       => __('You can add widgets here..', 'commet'),
+			'description'	       => __('You can add  right sidebar widgets here..', 'commet'),
 			'class'			         => '',
 			'before_widget'	     => '<div class="widget">',
 			'after_widget'	     => '</div>',

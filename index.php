@@ -70,7 +70,9 @@
                 <li><a href="#">Uber launches in Las Vegas<i class="ti-arrow-right"></i><span>20 Sep, 2015</span></a></li>
                 <li><a href="#">Fun with Product Hunt<i class="ti-arrow-right"></i><span>16 Sep, 2015</span></a></li>
               </ul>
-            </div>
+            </div> 
+
+            <?php dynamic_sidebar('right_sidebar');?>
           </div>
         </div>
       </div>
