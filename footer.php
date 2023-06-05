@@ -79,10 +79,6 @@
     </div>
   </div>
 </footer>
-<script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/jquery.js"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/bundle.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-<script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/main.js"></script>
 <?php wp_footer();?>
 </body>
 
