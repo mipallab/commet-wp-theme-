@@ -38,13 +38,9 @@
             ?>
           <!-- pagination end -->
         </div>
-        <div class="col-md-3 col-md-offset-1">
-          <div class="sidebar hidden-sm hidden-xs">
-            <!-- sidebar start -->
-            <?php dynamic_sidebar('right_sidebar');?>
-            <!-- sidebar end -->
-          </div>
-        </div>
+        <!-- sidebar start -->
+          <?php get_sidebar();?>
+        <!-- sidebar end -->
       </div>
     </section>
 <?php get_footer();?>
