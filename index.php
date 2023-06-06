@@ -6,9 +6,16 @@
           <div class="v-center">
             <div class="container">
               <div class="title center">
-                <h1 class="upper">This is our blog<span class="red-dot"></span></h1>
-                <h4>We have a few tips for you.</h4>
+                <!-- blog page title -->
+                <h1 class="upper">
+                  <?php global $commet_options; echo $commet_options['blog-title'];?>
+                  <span class="red-dot"></span>
+                </h1>
+                <h4>
+                  <?php $commet_options; echo $commet_options['blog-subtitle'];?>
+                </h4>
                 <hr>
+                <!-- blog page title end  -->
               </div>
             </div>
           </div>

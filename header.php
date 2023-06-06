@@ -17,7 +17,12 @@
     </div>
     <header id="topnav">
       <div class="container">
-        <div class="logo"><a href="index.html"><img src="<?php echo get_template_directory_uri();?>/images/logo_light.png" alt="" class="logo-light"><img src="<?php echo get_template_directory_uri();?>/images/logo_dark.png" alt="" class="logo-dark"></a></div>
+        <div class="logo">
+          <a href="<?php echo home_url();?>">
+            <img src="<?php global $commet_options; echo $commet_options['light-logo']['url'];?>" alt="" class="logo-light">
+            <img src="<?php echo $commet_options['dark-logo']['url'];?>" alt="" class="logo-dark">
+          </a>
+        </div>
         <div class="menu-extras">
           <div class="menu-item">
             <div class="cart"><a href="#"><i class="ti-bag"></i><span class="cart-number">2</span></a>

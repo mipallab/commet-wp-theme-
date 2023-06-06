@@ -11,7 +11,7 @@
         <?php the_author();?>
       </a>
       <span class="dot"></span>
-      <span><?php the_time();?></span>
+      <span><?php the_time('d F Y');?></span>
       <span class="dot"></span>
       <?php the_tags();?>
     </h6>

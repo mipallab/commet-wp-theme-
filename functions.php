@@ -228,12 +228,12 @@
 	}
 
 // commet theme options add
-	if(file_exists(dirname(__FILE__).'/theme_options/redux-core/framework.php')) {
-		require_once(dirname(__FILE__).'/theme_options/redux-core/framework.php');
+	if(file_exists(dirname(__FILE__).'/library/theme_options/redux-core/framework.php')) {
+		require_once(dirname(__FILE__).'/library/theme_options/redux-core/framework.php');
 	}
 
-	if(file_exists(dirname(__FILE__).'/theme_options/sample/options.php')) {
-		require_once(dirname(__FILE__).'/theme_options/sample/options.php');
+	if(file_exists(dirname(__FILE__).'/library/theme_options/sample/options.php')) {
+		require_once(dirname(__FILE__).'/library/theme_options/sample/options.php');
 	}
 
 // post META BOX
