@@ -53,7 +53,8 @@
 // Register Footer Menu
 	register_nav_menus([
 
-		'footer-menu'		=> 'Footer Menu'
+		'footer-menu'		=> 'Footer Menu',
+		'main-menu'			=> 'Main Menu'
 
 	]);
 
@@ -245,6 +246,10 @@
 		require_once(dirname(__FILE__).'/library/additional-fields(metabox)/config.php');
 	}
 
+// custom walker menu
+	if(file_exists(dirname(__FILE__).'/library/custom-nav-menu/commet-class-walker-nav-menu.php')) {
+		require_once(dirname(__FILE__).'/library/custom-nav-menu/commet-class-walker-nav-menu.php');
+	}
 
 
 ?>

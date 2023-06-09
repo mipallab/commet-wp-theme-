@@ -69,7 +69,18 @@
               <div class="lines"><span></span><span></span><span></span></div></a></div>
         </div>
         <div id="navigation">
-          <ul class="navigation-menu">
+
+          <!-- main menu -->
+          <?php
+          wp_nav_menu([
+              'theme_location'  => 'main-menu',
+              'menu_class'      => 'navigation-menu',
+              'container'       => '',
+              'walker'          => new Commet_Nav_Menu()
+            ]);
+          ?>
+
+        <!--  <ul class="navigation-menu">
             <li class="has-submenu"><a href="#">Home</a>
               <ul class="submenu megamenu">
                 <li>
@@ -221,7 +232,7 @@
                 <li><a href="shop-checkout.html">Checkout</a></li>
               </ul>
             </li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </header>
