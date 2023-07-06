@@ -1,5 +1,8 @@
 (function($){
 
+    
+
+    
   'use strict';
 
   function initNavbar () {
@@ -641,5 +644,16 @@
   }
 
   init();
+    
+
+    $(document).ready(function(){
+      $(".navigation-menu ul.megamenu").children('li').removeClass('has-submenu');
+      $(".navigation-menu ul.megamenu>li").children('ul').removeClass('submenu ');
+    });
+
+
+
+
+    
 
 })(jQuery)

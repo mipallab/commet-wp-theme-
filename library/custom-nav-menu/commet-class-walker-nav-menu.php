@@ -14,7 +14,12 @@
  *
  * @see Walker
  */
+
+
+
 class Commet_Nav_Menu extends Walker {
+
+	protected $is_megamenu;
 
 	public function display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output ) {
 		if ( ! $element ) {
@@ -80,6 +85,7 @@ class Commet_Nav_Menu extends Walker {
 
 		// Default class.
 		$classes = array( 'submenu' );
+		$classes[] = $this -> $is_megamenu;
 
 		/**
 		 * Filters the CSS class(es) applied to a menu list element.
@@ -148,7 +154,7 @@ class Commet_Nav_Menu extends Walker {
 		}
 		$indent = ( $depth ) ? str_repeat( $t, $depth ) : '';
 
-		$classes   = empty( $menu_item->classes ) ? array() : (array) $menu_item->classes;
+		//$classes   = empty( $menu_item->classes ) ? array() : (array) $menu_item->classes;
 		$classes[] = 'menu-item-' . $menu_item->ID;
 
 		/**
@@ -173,11 +179,24 @@ class Commet_Nav_Menu extends Walker {
 		 * @param stdClass $args      An object of wp_nav_menu() arguments.
 		 * @param int      $depth     Depth of menu item. Used for padding.
 		 */
+
 		$class_names = implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $menu_item, $args, $depth ) );
+		
 		if($args->has_children) {
 			$class_names .= ' has-submenu';
 		}
+
+		//megamenu 
+		$megamenu = get_post_meta($menu_item->ID, 'megamenu_key', true);
+		if($megamenu == 'checked') {
+			$this-> $is_megamenu = 'megamenu';
+		}else {
+			$this-> $is_megamenu = '';
+		}
+
+
 		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+		
 
 		/**
 		 * Filters the ID attribute applied to a menu item's list item element.

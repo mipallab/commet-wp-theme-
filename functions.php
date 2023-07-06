@@ -252,4 +252,49 @@
 	}
 
 
+
+
+
+
+
+/**
+ * Add custom admin menu 
+ **/
+
+add_action('wp_nav_menu_item_custom_fields', 'commet_admin_custom_fields', 10, 5);
+
+function commet_admin_custom_fields($item_id, $menu_item, $depth, $args, $current_object_id) {
+
+	if($depth == 0):
+	?>
+
+		<p class="field-css-megamenu">
+			<label for="edit-menu-item-megamenu-<?php echo $item_id; ?>">
+				<?php _e( 'Megamenu Options' ); ?><br />
+				<input type="checkbox" id="edit-menu-item-megamenu-<?php echo $item_id; ?>" class="edit-menu-item-megamenu" name="menu-item-megamenu[<?php echo $item_id; ?>]" 
+				value="checked"
+
+				 <?php checked('checked',get_post_meta($item_id, 'megamenu_key',true ), true);?> />
+				Megamenu
+			</label>
+		</p>
+
+	<?php
+	endif;
+}
+
+add_action('wp_update_nav_menu_item', 'update_commet_admin_custom_fields', 10, 3);
+
+function update_commet_admin_custom_fields($menu_id, $_actual_db_id, $args ) {
+	$megamenu_type = (isset($_POST['menu-item-megamenu'][$_actual_db_id])) ? $_POST['menu-item-megamenu'][$_actual_db_id] : '';
+
+	if(empty($megamenu_type)) {
+		delete_post_meta($_actual_db_id, 'megamenu_key');
+	}else{
+		update_post_meta($_actual_db_id, 'megamenu_key', $megamenu_type);
+	}
+} 
+
+
+
 ?>
