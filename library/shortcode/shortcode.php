@@ -337,3 +337,115 @@
 	});
 
 
+
+
+
+
+	/**
+	 * 
+	 * This is Home page section
+	 * 
+	 * @ Protfolio Section
+	 * 
+	 */
+
+	add_shortcode('protfolio_section', function($attr, $content){
+
+		$visionAttributes = extract( shortcode_atts(array(
+			'title'			=> 'Selected Works'
+		),$attr));
+
+		ob_start();
+		?>
+
+			<section id="portfolio" class="pb-0">
+		      <div class="container">
+		        <div class="col-md-6">
+		          <div class="title m-0 txt-xs-center txt-sm-center">
+		            <h2 class="upper"><?php echo $title;?><span class="red-dot"></span></h2>
+		            <hr>
+		          </div>
+		        </div>
+		        <div class="col-md-6">
+		          <ul id="filters" class="no-fix mt-25">
+		            <li data-filter="*" class="active">All</li>
+		            <li data-filter=".branding">Branding</li>
+		            <li data-filter=".graphic">Graphic</li>
+		            <li data-filter=".printing">Printing</li>
+		            <li data-filter=".video">Video</li>
+		          </ul>
+		        </div>
+		      </div>
+		      <div class="section-content pb-0">     
+		        <div id="works" class="four-col wide mt-50">
+		          
+		          <?php 
+		          	$commet_portfolio = new WP_Query(array(
+		          		'post_type'	=> 'protfolio',
+		          		'post_per_page' => 8
+		          	));
+
+		          	while($commet_portfolio -> have_posts()): $commet_portfolio -> the_post();?>
+			          <div class="work-item 
+
+			          	<?php
+
+ 									
+		                      			$types = get_the_terms(get_the_id(),'commet-protfolio-type');
+		                      			$num_of_items = count($types);
+		                      			$num_count = 0;
+
+		                      			foreach($types as $type) {
+		                      				echo $type->name. " ";
+		                      			}
+		                      			
+
+		                      		?>
+
+			          ">
+			            <div class="work-detail"><a href="<?php echo the_permalink();?>"><?php echo the_post_thumbnail();?>
+			                <div class="work-info">
+			                  <div class="centrize">
+			                    <div class="v-center">
+			                      <h3><?php echo the_title();?></h3>
+			                      <p>
+
+
+			                      	
+		                      		<?php
+
+ 									
+		                      			$types = get_the_terms(get_the_id(),'commet-protfolio-type');
+		                      			$num_of_items = count($types);
+		                      			$num_count = 0;
+
+		                      			foreach($types as $type) {
+		                      				echo $type->name;
+
+		                      				$num_count = $num_count + 1;
+											   if ($num_count < $num_of_items) {
+											     echo ", ";
+											}
+		                      			}
+		                      			
+
+		                      		?>
+
+
+			                      </p>
+			                    </div>
+			                  </div>
+			                </div></a></div>
+			          </div>
+			        <?php endwhile;?>
+
+		        </div>
+		      </div>
+		    </section>
+
+
+		<?php
+		return ob_get_clean();
+	});
+
+

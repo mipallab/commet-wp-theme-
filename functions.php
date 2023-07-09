@@ -20,23 +20,58 @@
 		add_theme_support('title-tag');
 		add_theme_support('post-formats',['audio','video','quote','gallery']);
 
-	// register CUSTOM PROTFOLIO post type
-		register_post_type('protfolio',[
-			'public'		       => true,
-			'labels'		       => [
-				'menu_name'		   => __('Commet Protfolios','commet'),
-				'name'			     => __('Protfolios','commet'),
-				'singular_name'	 => __('Commet Protfolio','commet'),
-				'add_new'		     => __('Add new protfolio','commet'),
-				'add_new_item'	 => __('Add new protfolio','commet'),
-			],
-			"menu_icon"	       => "dashicons-groups"
-		]);
+	
+
+	/**
+	 * 
+	 * 
+	 * @ register custom Commet PROTFOLIO post type
+	 * 
+	 * 
+	 */
+
+		if(current_user_can('manage_options')) {
+			
+
+			register_post_type('protfolio',[
+				'public'		       => true,
+				'labels'		       => [
+					'menu_name'		   => __('Commet Protfolios','commet'),
+					'name'			     => __('Protfolios','commet'),
+					'singular_name'	 => __('Commet Protfolio','commet'),
+					'add_new'		     => __('Add new protfolio','commet'),
+					'add_new_item'	 => __('Add new protfolio','commet'),
+					'set_featured_image'	=> 'set protfolio image',
+					'remove_featured_image'	=> 'remove protfolio image'
+				],
+				"menu_icon"	       	=> "dashicons-groups",
+				'supports'			=> array('title','thumbnail')
+			]);
+
+			register_taxonomy('commet-protfolio-type', 'protfolio', array(
+				'public'		=> true,
+				'hierarchical'	=> true,
+				'labels'	=> array(
+					'name' => 'Protfolio type',
+					'add_new'	=> 'Add new type',
+					'add_new_item'	=> 'Add new item'
+				))
+			);
+		}
+
+
 	}
 
 	/**
-	 * Custom Home Slider
+	 * 
+	 * 
+	 * 
+	 * 
+	 * @ Custom Home Slider
+	 * 
+	 * 
 	 **/
+
 		register_post_type('commet-home-slider', array(
 
 			'public'		=> true,
@@ -52,6 +87,16 @@
 			'menu_icon' 	=> 'dashicons-slides'
 
 		));
+
+
+
+
+	/**
+	 * 
+	 * 	Sidebar widgets
+	 * 
+	 */
+
 
 	add_action('widgets_init', 'sidebar_option');
 	function sidebar_option() {
