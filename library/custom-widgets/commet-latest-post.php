@@ -26,7 +26,7 @@
 				   <!-- checkbox  -->
 				   	<ul class="nav">
 				        <?php while($posts-> have_posts()): $posts-> the_post();?>
-				        <li><a href="#"><?php the_title();?><i class="ti-arrow-right"></i>
+				        <li><a href="<?php echo the_permalink();?>"><?php the_title();?><i class="ti-arrow-right"></i>
 				        	<?php if(!empty($tumar['date'])) :?>
 				        		<span><?php the_time('d M, Y');?></span>
 				        	<?php endif;?>

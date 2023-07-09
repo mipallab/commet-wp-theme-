@@ -645,7 +645,9 @@
 
   init();
     
-
+    /**
+     *  For Megamenu
+     */
     $(document).ready(function(){
       $(".navigation-menu ul.megamenu").children('li').removeClass('has-submenu');
       $(".navigation-menu ul.megamenu>li").children('ul').removeClass('submenu ');

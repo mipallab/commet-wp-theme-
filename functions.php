@@ -34,6 +34,25 @@
 		]);
 	}
 
+	/**
+	 * Custom Home Slider
+	 **/
+		register_post_type('commet-home-slider', array(
+
+			'public'		=> true,
+			'supports'		=> array('title','editor','thumbnail'),
+			'labels'		=> array(
+				'name'		=> 'Home Slider',
+				'add_new_item'	=> 'Add New Item',
+				'add_new'		=> 'Add New Item',
+				'featured_image'=> 'Add Slider Image',
+				'remove_featured_image'=> 'Remove Slider Image',
+				'set_featured_image'  => 'Set Slider Image'
+			),
+			'menu_icon' 	=> 'dashicons-slides'
+
+		));
+
 	add_action('widgets_init', 'sidebar_option');
 	function sidebar_option() {
 		register_sidebar(array(
@@ -250,6 +269,10 @@
 	if(file_exists(dirname(__FILE__).'/library/custom-nav-menu/commet-class-walker-nav-menu.php')) {
 		require_once(dirname(__FILE__).'/library/custom-nav-menu/commet-class-walker-nav-menu.php');
 	}
+// shortcode
+	if(file_exists(dirname(__FILE__).'/library/shortcode/shortcode.php')) {
+		require_once(dirname(__FILE__).'/library/shortcode/shortcode.php');
+	}
 
 
 
@@ -294,6 +317,16 @@ function update_commet_admin_custom_fields($menu_id, $_actual_db_id, $args ) {
 		update_post_meta($_actual_db_id, 'megamenu_key', $megamenu_type);
 	}
 } 
+
+
+
+
+register_activation_hook(__FILE__, 'flush_rewrite');
+
+	function flush_rewrite() {
+		flush_rewrite_rules();
+	}
+
 
 
 
