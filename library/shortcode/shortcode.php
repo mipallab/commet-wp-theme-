@@ -22,7 +22,7 @@
 
 	        $home_Slider = new WP_Query(array(
 	        	'post_type'		=> 'commet-home-slider',
-	        	'post_per_page'	=> 3
+	        	'posts_per_page'	=> 3
 	        ));	
 
 	        while($home_Slider -> have_posts()): $home_Slider -> the_post();?>
@@ -352,7 +352,8 @@
 	add_shortcode('protfolio_section', function($attr, $content){
 
 		$visionAttributes = extract( shortcode_atts(array(
-			'title'			=> 'Selected Works'
+			'title'			=> 'Selected Works',
+			'posts_per_count'	=> 8
 		),$attr));
 
 		ob_start();
@@ -368,11 +369,17 @@
 		        </div>
 		        <div class="col-md-6">
 		          <ul id="filters" class="no-fix mt-25">
+
 		            <li data-filter="*" class="active">All</li>
-		            <li data-filter=".branding">Branding</li>
-		            <li data-filter=".graphic">Graphic</li>
-		            <li data-filter=".printing">Printing</li>
-		            <li data-filter=".video">Video</li>
+		          	<?php 
+		          		$types = get_terms('commet-protfolio-type');
+
+		          		foreach($types as $type):
+		          	?>
+		            <li data-filter=".<?php echo $type->slug;?>"><?php echo $type->name;?></li>
+		            <?php
+		            	endforeach;
+		            ?>
 		          </ul>
 		        </div>
 		      </div>
@@ -382,7 +389,7 @@
 		          <?php 
 		          	$commet_portfolio = new WP_Query(array(
 		          		'post_type'	=> 'protfolio',
-		          		'post_per_page' => 8
+		          		'posts_per_page' => $posts_per_count
 		          	));
 
 		          	while($commet_portfolio -> have_posts()): $commet_portfolio -> the_post();?>
@@ -392,11 +399,9 @@
 
  									
 		                      			$types = get_the_terms(get_the_id(),'commet-protfolio-type');
-		                      			$num_of_items = count($types);
-		                      			$num_count = 0;
 
 		                      			foreach($types as $type) {
-		                      				echo $type->name. " ";
+		                      				echo $type->slug. " ";
 		                      			}
 		                      			
 
@@ -416,6 +421,7 @@
 
  									
 		                      			$types = get_the_terms(get_the_id(),'commet-protfolio-type');
+		                      		
 		                      			$num_of_items = count($types);
 		                      			$num_count = 0;
 
