@@ -96,6 +96,7 @@ a.white-text:hover {
 p {
   color: #6d747c;
 }
+
 .icon-list li {
   margin-bottom: 10px;
   list-style-type: none;
@@ -3767,11 +3768,18 @@ section.dark .nav-tabs.outline > li.active > a:hover {
 .border-right {
   border-right: 1px solid #e7e7e7;
 }
+.border-right:nth-child(3n) {
+  border-right: none;
+}
 .border-bottom {
   border-bottom: 1px solid #e7e7e7;
 }
+
 .border-left {
   border-left: 1px solid #e7e7e7;
+}
+.bordered {
+  border: 1px solid #e7e7e7;
 }
 .m-0 {
   margin: 0!important;

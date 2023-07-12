@@ -22,73 +22,129 @@
 
 	
 
-	/**
-	 * 
-	 * 
-	 * @ register custom Commet PROTFOLIO post type
-	 * 
-	 * 
-	 */
+		/**
+		 * 
+		 * 
+		 * @ register custom Commet PROTFOLIO post type
+		 * 
+		 * 
+		 */
+			// capabilities
+			if(current_user_can('manage_options')) {
+				
 
-		if(current_user_can('manage_options')) {
-			
+				register_post_type('protfolio',[
+					'public'		       => true,
+					'labels'		       => [
+						'menu_name'		   => __('Commet Protfolios','commet'),
+						'name'			     => __('Protfolios','commet'),
+						'singular_name'	 => __('Commet Protfolio','commet'),
+						'add_new'		     => __('Add new protfolio','commet'),
+						'add_new_item'	 => __('Add new protfolio','commet'),
+						'set_featured_image'	=> 'set protfolio image',
+						'remove_featured_image'	=> 'remove protfolio image'
+					],
+					"menu_icon"	       	=> "dashicons-groups",
+					'supports'			=> array('title','thumbnail')
+				]);
 
-			register_post_type('protfolio',[
-				'public'		       => true,
-				'labels'		       => [
-					'menu_name'		   => __('Commet Protfolios','commet'),
-					'name'			     => __('Protfolios','commet'),
-					'singular_name'	 => __('Commet Protfolio','commet'),
-					'add_new'		     => __('Add new protfolio','commet'),
-					'add_new_item'	 => __('Add new protfolio','commet'),
-					'set_featured_image'	=> 'set protfolio image',
-					'remove_featured_image'	=> 'remove protfolio image'
-				],
-				"menu_icon"	       	=> "dashicons-groups",
-				'supports'			=> array('title','thumbnail')
-			]);
+				register_taxonomy('commet-protfolio-type', 'protfolio', array(
+					'public'		=> true,
+					'hierarchical'	=> true,
+					'labels'	=> array(
+						'name' => 'Protfolio type',
+						'add_new'	=> 'Add new type',
+						'add_new_item'	=> 'Add new item'
+					))
+				);
+			}
+		
 
-			register_taxonomy('commet-protfolio-type', 'protfolio', array(
+
+		/**
+		 * 
+		 * 
+		 * @ register custom testimonials post type
+		 * 
+		 * 
+		 */
+			// capabilities
+			if(current_user_can('manage_options')) {
+				
+
+				register_post_type('testimonials',[
+					'public'		       => true,
+					'labels'		       => [
+						'menu_name'		   => __('Testimonials','commet'),
+						'name'			     => __('Testimonials','commet'),
+						'singular_name'	 => __('Testimonial','commet'),
+						'add_new'		     => __('Add new testimonials','commet'),
+						'add_new_item'	 => __('Add new testimonials','commet')
+					],
+					"menu_icon"	       	=> "dashicons-testimonial",
+					'supports'			=> array('title','editor')
+				]);
+			}
+
+
+		
+
+		/**
+		 * 
+		 * 
+		 * @ register custom Client post type
+		 * 
+		 * 
+		 */
+			// capabilities
+			if(current_user_can('manage_options')) {
+				
+
+				register_post_type('client',[
+					'public'		       => true,
+					'labels'		       => [
+						'menu_name'		   => __('Happy Client','commet'),
+						'name'			     => __('Client','commet'),
+						'add_new'		     => __('Add new client','commet'),
+						'add_new_item'	 => __('Add new client','commet'),
+						'set_featured_image'	=> 'set client logo',
+						'remove_featured_image'	=> 'remove client logo'
+					],
+					"menu_icon"	       	=> "dashicons-smiley",
+					'supports'			=> array('title','thumbnail')
+				]);
+			}
+
+
+		
+
+		/**
+		 * 
+		 * 
+		 * 
+		 * 
+		 * @ Custom Home Slider
+		 * 
+		 * 
+		 **/
+
+			register_post_type('commet-home-slider', array(
+
 				'public'		=> true,
-				'hierarchical'	=> true,
-				'labels'	=> array(
-					'name' => 'Protfolio type',
-					'add_new'	=> 'Add new type',
-					'add_new_item'	=> 'Add new item'
-				))
-			);
-		}
+				'supports'		=> array('title','editor','thumbnail'),
+				'labels'		=> array(
+					'name'		=> 'Home Slider',
+					'add_new_item'	=> 'Add New Item',
+					'add_new'		=> 'Add New Item',
+					'featured_image'=> 'Add Slider Image',
+					'remove_featured_image'=> 'Remove Slider Image',
+					'set_featured_image'  => 'Set Slider Image'
+				),
+				'menu_icon' 	=> 'dashicons-slides'
 
+			));
 
 	}
-
-	/**
-	 * 
-	 * 
-	 * 
-	 * 
-	 * @ Custom Home Slider
-	 * 
-	 * 
-	 **/
-
-		register_post_type('commet-home-slider', array(
-
-			'public'		=> true,
-			'supports'		=> array('title','editor','thumbnail'),
-			'labels'		=> array(
-				'name'		=> 'Home Slider',
-				'add_new_item'	=> 'Add New Item',
-				'add_new'		=> 'Add New Item',
-				'featured_image'=> 'Add Slider Image',
-				'remove_featured_image'=> 'Remove Slider Image',
-				'set_featured_image'  => 'Set Slider Image'
-			),
-			'menu_icon' 	=> 'dashicons-slides'
-
-		));
-
-
 
 
 	/**
