@@ -538,12 +538,13 @@
 
 				$testimonials = new WP_Query(array(
 					'posts_per_page'	=> $posts_per_count,
-					'post_type'			=> 'testimonials'
+					'post_type'			=> 'testimonials',
+					'bg_img'			=> 'http://localhost/class56/wp-content/themes/commet/images/bg/10.jpg'
 				));
 			?>
 
 			<section class="parallax">
-		      <div data-parallax="scroll" data-image-src="images/bg/7.jpg" class="parallax-bg"></div>
+		      <div data-parallax="scroll" data-image-src="<?php echo $bg_img;?>" class="parallax-bg"></div>
 		      <div class="parallax-overlay pb-50 pt-50">
 		        <div class="container">
 		          <div class="title center">

@@ -285,6 +285,8 @@ class Commet_Nav_Menu extends Walker {
 		$item_output .= '</a>';
 		$item_output .= $args->after;
 
+
+
 		/**
 		 * Filters a menu item's starting output.
 		 *
