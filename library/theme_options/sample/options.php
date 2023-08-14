@@ -317,6 +317,36 @@ Redux::set_section(
 require_once Redux_Core::$dir . '../sample/sections/general-options/upload-logo.php';
 
 
+// -> Blog Fields
+Redux::set_section(
+	$opt_name,
+	array(
+		'title'            => __( 'Blog Page Otp', 'commet' ),
+		'id'               => 'blog-opt',
+		'desc'             => __( 'These are Blog page Options!', 'commet' ),
+		'customizer_width' => '400px',
+		'icon'             => 'el el-blogger',
+	)
+);
+
+require_once Redux_Core::$dir . '../sample/sections/blog/blog-options.php';
+
+
+// -> Shop Fields
+Redux::set_section(
+	$opt_name,
+	array(
+		'title'            => __( 'Shop Page Otp', 'commet' ),
+		'id'               => 'shop-opt',
+		'desc'             => __( 'These are Shop page Options!', 'commet' ),
+		'customizer_width' => '400px',
+		'icon'             => 'el el-shopping-cart',
+	)
+);
+
+require_once Redux_Core::$dir . '../sample/sections/shop/shop-header.php';
+
+
 /*
  * <--- END SECTIONS
  */

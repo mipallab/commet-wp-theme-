@@ -2610,7 +2610,7 @@ section.parallax .countdown span {
   color: #191b1d;
 }
 
-.pagination {
+/*.pagination {
   display: block;
   text-align: center;
   margin-top: 50px;
@@ -2656,7 +2656,59 @@ section.parallax .countdown span {
   background-color: transparent;
   border-color: transparent;
   color: #EF2D56;
+}*/
+
+
+.pagination {
+  display: block;
+  text-align: center;
+  margin-top: 50px;
 }
+.pagination li {
+  display: inline-block;
+}
+.pagination li span.current {
+  background-color: #EF2D56;
+  color: #fff;
+  padding: 5px 11px;
+  border: 1px solid #EF2D56;
+}
+.pagination li span.current:hover {
+  background-color: transparent;
+  color: #EF2D56;
+  border-color: #EF2D56;
+}
+.pagination li span.current:focus {
+  background-color: #EF2D56;
+  border-color: #EF2D56;
+  color: #fff;
+}
+.pagination li:first-child > a,
+.pagination li:last-child > a {
+  border-radius: 0;
+}
+.pagination li > a {
+  color: #191b1d;
+  border-color: transparent;
+  font-size: 14px;
+  border-radius: 0;
+  background-color: transparent;
+  padding: 6px 12px;
+}
+.pagination li > a:hover {
+  background-color: #191b1d;
+  color: #fff;
+  border-color: #191b1d;
+}
+.pagination li > a:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #EF2D56;
+}
+
+
+
+
 .sidebar .widget {
   margin-bottom: 50px;
 }

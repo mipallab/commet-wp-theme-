@@ -36,6 +36,46 @@ function post_type_additioal_field(){
 		'desc'			=> __('You can add image here...')
 	]);
 
+	/**
+	 * 
+	 * 	For Page title, subtitle & background image
+	 * 
+	 */
+
+	
+	$commet_cmb = new_cmb2_box(array(
+		'id'			=> '_header-fields',
+		'title'			=> __('Header Fields','commet'),
+		'object_types'	=> array('page')
+	));
+
+	// Title 
+	// $commet_cmb -> add_field(array(
+	// 	'name'			=> __('Title Text' ,'commet'),
+	// 	'id'			=> '_title',
+	// 	'type'			=> 'text',
+	// 	'desc'			=> __('header title here...','commet'),
+	// 	'default'		=> __('Default','commet')
+	// ));
+
+	// Subtitle
+	$commet_cmb -> add_field([
+		'id'			=> '_subtitle',
+		'name'			=> __('Sub-title Text','commet'),
+		'type'			=> 'text',
+		'desc'			=> __('header subtitle here...','commet'),
+		'default'		=> __('Default subtitle here.','commet')
+	]);
+
+	// Image
+	$commet_cmb -> add_field([
+		'id'			=> '_bg-image',
+		'name'			=> __('Background Image','commet'),
+		'type'			=> 'file',
+		'default'		=> get_template_directory_uri().'/images/bg/18.jpg',
+		'desc'			=> __('title backround image here...','commet')
+	]);
+
 
 
 	/**

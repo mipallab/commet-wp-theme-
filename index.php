@@ -1,6 +1,6 @@
 <?php get_header();?>
     <section class="page-title parallax">
-      <div data-parallax="scroll" data-image-src="<?php echo get_template_directory_uri();?>/images/bg/18.jpg" class="parallax-bg"></div>
+      <div data-parallax="scroll" data-image-src="<?php global $commet_options;  echo $commet_options['blog-bg-image']['url'];?>" class="parallax-bg"></div>
       <div class="parallax-overlay">
         <div class="centrize">
           <div class="v-center">
@@ -8,7 +8,7 @@
               <div class="title center">
                 <!-- blog page title -->
                 <h1 class="upper">
-                  <?php global $commet_options; echo $commet_options['blog-title'];?>
+                  <?php  echo $commet_options['blog-title'];?>
                   <span class="red-dot"></span>
                 </h1>
                 <h4>
@@ -35,13 +35,21 @@
 
           <!-- pagination -->
             <?php
+              
               the_posts_pagination([
                 'mid_size'          => 1,
                 'prev_next'         => true,
                 'prev_text'         => __('<span aria-hidden="true"><i class="ti-arrow-left"></i></span>','commet'),
                 'next_text'         => __('<span aria-hidden="true"><i class="ti-arrow-right"></i></span>', 'commet'),
-                'screen_reader_text' => __(' ','commet')
+                'screen_reader_text' => __(' ','commet'),
+                'type'              => 'list',
+                'end_size'          => 1,
+                'mid_size'          => 2
+
               ]);
+
+
+
             ?>
           <!-- pagination end -->
         </div>

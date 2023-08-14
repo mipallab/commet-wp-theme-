@@ -19,6 +19,7 @@
 		add_theme_support('post-thumbnails');
 		add_theme_support('title-tag');
 		add_theme_support('post-formats',['audio','video','quote','gallery']);
+		add_theme_support('woocommerce');
 
 	
 
@@ -144,6 +145,10 @@
 
 			));
 
+
+
+
+
 	}
 
 
@@ -234,6 +239,7 @@
 		wp_enqueue_style('main-stylesheet', get_template_directory_uri().'/css/style.css', [] ,'', false);
 		wp_enqueue_style('google-fonts',return_commet_fonts());
 		wp_enqueue_style('stylesheet', get_stylesheet_uri());
+		wp_enqueue_style('comment-reply');
 	}
 
 // linkup scripts
@@ -257,6 +263,7 @@
 			wp_enqueue_script('bundle', get_template_directory_uri().'/js/bundle.js', '' , array('jquery'), true);
 			wp_enqueue_script('google-map', 'https://maps.googleapis.com/maps/api/js?v=3.exp', '' , array('jquery','bundle'), true);
 			wp_enqueue_script('main-js', get_template_directory_uri().'/js/main.js','',array('jquery','bundle'),true);
+			wp_enqueue_script('comment-reply');
 		}
 
 	// admin script here
@@ -370,10 +377,16 @@
 	if(file_exists(dirname(__FILE__).'/library/custom-nav-menu/commet-class-walker-nav-menu.php')) {
 		require_once(dirname(__FILE__).'/library/custom-nav-menu/commet-class-walker-nav-menu.php');
 	}
+
 // shortcode
 	if(file_exists(dirname(__FILE__).'/library/shortcode/shortcode.php')) {
 		require_once(dirname(__FILE__).'/library/shortcode/shortcode.php');
 	}
+
+// TGM plugins
+	// if(file_exists(dirname(__FILE__).'/library/plugins/example.php')) {
+	// //	require_once(dirname(__FILE__).'/library/plugins/example.php');
+	// }
 
 
 
@@ -417,8 +430,7 @@ function update_commet_admin_custom_fields($menu_id, $_actual_db_id, $args ) {
 	}else{
 		update_post_meta($_actual_db_id, 'megamenu_key', $megamenu_type);
 	}
-} 
-
+}
 
 
 
@@ -429,6 +441,173 @@ register_activation_hook(__FILE__, 'flush_rewrite');
 	}
 
 
+add_action('vc_before_init', function(){
+	vc_set_as_theme();
+});
 
 
-?>
+
+
+
+
+/**
+ * 
+ * 
+ * Comments.php
+ * 
+ * comment styling here
+ *
+ */
+
+
+function commet_custom_comment_fields(){
+
+	$commenter = wp_get_current_commenter();
+	$req = get_option('require_name_email');
+	$arial_req = ($req ? " aria-required='true' " : ' ');
+
+	$fields = array(
+			'author'		=> '<div class="form-double">
+									<div class="form-group">
+	                    				<input name="author" type="text" placeholder="Name" class="form-control" value="'.esc_attr($commenter['comment_author']).'"/>
+	                  				</div>',
+		    'email'		=> ' 		<div class="form-group last">
+		                    			<input name="email" type="text" placeholder="Email" class="form-control" value"'. esc_attr($commenter['comment_author_email']) .'"/>
+		                  			</div>
+	                  			</div>'
+
+
+
+
+	);
+
+	return $fields;
+}
+add_filter('comment_form_default_fields', 'commet_custom_comment_fields');
+
+
+function commet_custom_comment_form($defaults){
+	$defaults['comment_notes_before'] = '';
+	$defaults['comment_notes_after'] = '';
+	$defaults['action'] = 'POST';
+	$defaults['id_submit'] = 'comment-id-submit';
+	$defaults['class_form'] = 'comment-form';
+	$defaults['class_form'] = 'comment-form';
+	$defaults['class_form'] = 'comment-form';
+	$defaults['class_form'] = 'comment-form';
+	$defaults['title_reply'] = __('<h5 class="upper">Leave a comment</h5>', 'commet');
+	$defaults['comment_field'] = '<div class="form-group"><textarea placeholder="Comment" class="form-control"></textarea></div>';
+	$defaults['submit_button']	= '<div class="form-submit text-right">
+                  <button type="submit" class="btn btn-color-out">Post Comment</button>
+                </div>';
+
+	return $defaults;
+
+}
+
+add_filter('comment_form_defaults', 'commet_custom_comment_form');
+
+
+/**
+ * 
+ * Shop page custimization
+ * 
+ */
+	// shop title none
+	add_filter('woocommerce_show_page_title', function() {
+		return ;
+	});
+
+
+	remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5);
+	remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10);
+
+
+
+
+// custom DB table register when commet theme active
+
+	function active_hook(){
+
+		// create a custom db in wordpress
+
+		global $wpdb;
+			
+		$prefix = $wpdb->prefix;
+		$table_name = $prefix. "pallab";
+		
+		$sql = "CREATE TABLE $table_name (
+
+			id INT AUTO_INCREMENT,
+			name VARCHAR(250),
+			roll INT,
+
+			UNIQUE KEY ID (id)
+
+		)";
+
+		require_once( ABSPATH . "wp-admin/includes/upgrade.php" );
+
+		dbDelta( $sql );
+	}
+
+	register_activation_hook( __FILE__, "active_hook" );
+
+	
+
+// custom DB table delete when commet theme deactive
+
+function your_plugin_deactivate_function() {
+    global $wpdb;
+
+    $prefix = $wpdb->prefix;
+	$table_name = $prefix. "pallab";
+
+
+    // SQL query to drop the custom table
+    $sql = "DROP TABLE IF EXISTS $table_name;";
+
+    $wpdb->query($sql);
+}
+
+register_deactivation_hook(__FILE__, 'your_plugin_deactivate_function');
+
+
+
+global $wpdb;
+
+if( isset( $_POST['submit'] ) ) {
+	$tableName = $wpdb->prefix . "pallab";
+	$name = $_POST['name'];
+	$roll = $_POST['roll'];
+
+
+	$wpdb->insert($tableName, array(
+		'name'	=> $name,
+		'roll'	=> $roll
+	));
+
+	wp_redirect(home_url().'/wpdb-practice/');
+	exit;
+}
+
+
+ 
+
+if( isset( $_POST['updatesubmit'] ) ) {
+	$tableName = $wpdb->prefix . "pallab";
+	$name = $_POST['name'];
+	$id = $_GET['edit'];
+
+	$wpdb->update($tableName, array(
+		'name'	=> $name
+		),
+		array(
+
+			'id'	=> $id
+		)
+	);
+
+	wp_redirect(home_url().'/wpdb-practice/');
+	exit;
+}
